@@ -131,24 +131,24 @@ No polling is required.
 
 ### Server Startup
 
-![Server Startup](public/Screenshot 2026-06-06 081609.png)
-
-### Client Connected
-
-![Client Connected](./screenshots/client-connected.png)
+![Server Startup](./public/Screenshot 2026-06-06 081609.png)
 
 ### Order Insert Event
 
-![Insert Event](public/Screenshot 2026-06-06 081634.png)
+![Insert Event](./public/Screenshot 2026-06-06 081634.png)
+![Client side](./public/Screenshot 2026-06-06 081742.png)
 
 ### Order Update Event
 
-![Update Event](./screenshots/update.png)
+![Update Event](./public/Screenshot 2026-06-06 081829.png)
+![client side](./public/Screenshot 2026-06-06 081849.png)
 
 ### Order Delete Event
 
-![Delete Event](./screenshots/delete.png)
+![Delete Event](./public/Screenshot 2026-06-06 081922.png)
+![client side](./public/Screenshot 2026-06-06 081950.png)
+
 
 ### Database Notification Logs
 
-![Database Events](./screenshots/db-events.png)
+![Database Events](./public/Screenshot 2026-06-06 083004.png)
