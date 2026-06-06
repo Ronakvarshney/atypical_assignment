@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Updates</title>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .status {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .connected {
+      color: green;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      border: 1px solid #ddd;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Real-Time Order Updates</h1>
+
+  <div id="connection-status" class="status">
+    Connecting...
+  </div>
+
+  <ul id="orders"></ul>
+
+  <script>
+    const socket = io();
+
+    const orders = document.getElementById("orders");
+    console.log(orders)
+    const status = document.getElementById("connection-status");
+
+    socket.on("connect", () => {
+      status.textContent = `Connected (${socket.id})`;
+      status.classList.add("connected");
+    });
+
+    socket.on("disconnect", () => {
+      status.textContent = "Disconnected";
+      status.classList.remove("connected");
+    });
+
+    socket.on("order-updated", (data) => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <strong>${data.operation}</strong><br>
+        Order ID: ${data.id}<br>
+        Customer: ${data.customer_name}<br>
+        Product: ${data.product_name}<br>
+        Status: ${data.status}
+      `;
+
+      orders.prepend(li);
+      console.log('New DB event ->' , data.operation);
+    });
+  </script>
+</body>
+</html>
