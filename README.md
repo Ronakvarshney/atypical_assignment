@@ -10,21 +10,21 @@ The solution avoids polling and instead uses PostgreSQL LISTEN/NOTIFY together w
 
 ## Features
 
-* Real-time order updates
-* Supports INSERT, UPDATE and DELETE operations
-* No client polling
-* Event-driven architecture
-* Lightweight browser client
-* PostgreSQL Trigger based notifications
+- Real-time order updates
+- Supports INSERT, UPDATE and DELETE operations
+- No client polling
+- Event-driven architecture
+- Lightweight browser client
+- PostgreSQL Trigger based notifications
 
 ---
 
 ## Tech Stack
 
-* Node.js
-* Express.js
-* PostgreSQL
-* Socket.IO
+- Node.js
+- Express.js
+- PostgreSQL
+- Socket.IO
 
 ---
 
@@ -44,11 +44,11 @@ Orders Table
 
 Orders
 
-* id (Primary Key)
-* customer_name
-* product_name
-* status
-* updated_at
+- id (Primary Key)
+- customer_name
+- product_name
+- status
+- updated_at
 
 ---
 
@@ -69,18 +69,18 @@ Traditional polling requires clients to repeatedly request data from the server.
 
 Problems:
 
-* Increased database load
-* Unnecessary network traffic
-* Delayed updates
+- Increased database load
+- Unnecessary network traffic
+- Delayed updates
 
 This implementation uses an event-driven architecture where updates are pushed only when data changes.
 
 Benefits:
 
-* Real-time communication
-* Better resource utilization
-* Lower latency
-* Easier scalability
+- Real-time communication
+- Better resource utilization
+- Lower latency
+- Easier scalability
 
 ---
 
@@ -88,9 +88,9 @@ Benefits:
 
 For larger systems, PostgreSQL LISTEN/NOTIFY can be replaced with:
 
-* Redis Pub/Sub
-* RabbitMQ
-* Apache Kafka
+- Redis Pub/Sub
+- RabbitMQ
+- Apache Kafka
 
 The overall event-driven architecture remains unchanged.
 
@@ -120,9 +120,35 @@ npm start
 
 When an order is inserted, updated, or deleted:
 
-* Database trigger fires
-* Notification is generated
-* Server receives event
-* Connected clients instantly receive updates
+- Database trigger fires
+- Notification is generated
+- Server receives event
+- Connected clients instantly receive updates
 
 No polling is required.
+
+## Screenshots
+
+### Server Startup
+
+![Server Startup](public/Screenshot 2026-06-06 081609.png)
+
+### Client Connected
+
+![Client Connected](./screenshots/client-connected.png)
+
+### Order Insert Event
+
+![Insert Event](public/Screenshot 2026-06-06 081634.png)
+
+### Order Update Event
+
+![Update Event](./screenshots/update.png)
+
+### Order Delete Event
+
+![Delete Event](./screenshots/delete.png)
+
+### Database Notification Logs
+
+![Database Events](./screenshots/db-events.png)
